@@ -24,5 +24,5 @@ const getNumberFromString = (string) => {
     const symbol = normalizedString[i];
     result = !isNaN(parseInt(symbol, 10)) ? result + symbol : result;
   }
-  return parseInt(result, 10);
+  return (result === '') ? NaN : parseInt(result, 10);
 };
