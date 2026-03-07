@@ -26,7 +26,3 @@ const getNumberFromString = (string) => {
   }
   return (result === '') ? NaN : parseInt(result, 10);
 };
-
-console.log(getNumberFromString('123'));
-console.log(getNumberFromString('123 456'));
-console.log(getNumberFromString('dgbddasf sdgfjnakjdfnkj adfn'));
