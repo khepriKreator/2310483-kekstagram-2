@@ -1,5 +1,5 @@
 const fakeNames = ['Dan', 'John', 'Dmitriy', 'Endy', 'Keks', 'Html', 'Lebovsky', 'Artem', 'Yana', 'Svetlana'];
-const fakeDescriptionArray = ['Rocks', 'Blood and Thunder', 'Great Keksby', 'React', 'Html Academy', 'Hexlet', 'Big and ugly']
+const fakeDescriptionArray = ['Rocks', 'Blood and Thunder', 'Great Keksby', 'React', 'Html Academy', 'Hexlet', 'Big and ugly'];
 const fakeMessagesArray = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',

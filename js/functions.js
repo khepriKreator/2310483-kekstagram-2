@@ -1,4 +1,4 @@
-const validateStringLenght = (string, length) => (string.length <= length) ? true : false;
+const validateStringLenght = (string, length) => string.length <= length;
 
 // Через преобразование в массив и обратно
 const isStringPalindrome1 = (string) => {
