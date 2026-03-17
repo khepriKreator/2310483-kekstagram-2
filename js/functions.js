@@ -29,22 +29,16 @@ const getNumberFromString = (string) => {
   return (result === '') ? NaN : parseInt(result, 10);
 };
 
+const getTimeInMinutes = (hours, minutes) => Number(hours) * 60 + Number(minutes);
+
 const isMeetingFitsWorkingDay = (workStarts, workEnds, meetingStarts, meetingDuration) => {
-  const [meetingStartHours, meetingStartMinutes] = workStarts.split(':');
+  const [workStartsHours, workStartsMinutes] = workStarts.split(':');
   const [workEndsHours, workEndsMinutes] = workEnds.split(':');
   const [meetingStartsHours, meetingStartsMinutes] = meetingStarts.split(':');
+  const workStartsInMinutes = getTimeInMinutes(workStartsHours, workStartsMinutes);
+  const workEndsInMinutes = getTimeInMinutes(workEndsHours, workEndsMinutes);
+  const meetingStartsInMinutes = getTimeInMinutes(meetingStartsHours, meetingStartsMinutes);
+  const meetingEndsInMinutes = meetingStartsInMinutes + meetingDuration;
 
-  const workStartsInMinutes = Number(meetingStartHours) * 60 + Number(meetingStartMinutes);
-  const workEndsInMinutes = Number(workEndsHours) * 60 + Number(workEndsMinutes);
-  const meetingStartsInMinutes = Number(meetingStartsHours) * 60 + Number(meetingStartsMinutes);
-
-  const result = workStartsInMinutes + meetingStartsInMinutes + meetingDuration <= workEndsInMinutes;
-
-  return result;
+  return (workStartsInMinutes <= meetingStartsInMinutes && workEndsInMinutes >= meetingEndsInMinutes);
 };
-
-console.log('result: ', isMeetingFitsWorkingDay('08:00', '17:30', '14:00', 90));
-console.log('result: ', isMeetingFitsWorkingDay('8:0', '10:0', '8:0', 120));
-console.log('result: ', isMeetingFitsWorkingDay('08:00', '14:30', '14:00', 90));
-console.log('result: ', isMeetingFitsWorkingDay('14:00', '17:30', '08:0', 90));
-console.log('result: ', isMeetingFitsWorkingDay('8:00', '17:30', '08:00', 900));
